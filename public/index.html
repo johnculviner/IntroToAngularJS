@@ -3,8 +3,21 @@
 <head>
     <title>Intro to Angular.js</title>
 </head>
-<body>
+<body ng-app="">
+<h1>
+    Hello {{firstName + " " + lastName}}!
+</h1>
 
+<div>
+    <div>
+        First Name:
+    </div>
+    <input ng-model="firstName" type="text" />
+    <div>
+        Last Name:
+    </div>
+    <input ng-model="lastName" type="text" />
+</div>
 <script src="lib/angular.js"></script>
 </body>
 </html>
