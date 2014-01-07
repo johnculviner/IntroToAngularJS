@@ -8,9 +8,10 @@ angular.module('faceFolio')
         $scope.updatePerson = function(form) {
             $scope.person.$save(function() {
                 form.$dirty = false;
+                $scope.$emit('personChanged')
+                $scope.$broadcast('saved')
             });
         }
-
 
         var personStatuses = $resource('/people/:personId/statuses/:statusId',
             { personId : $stateParams.id, statusId:'@id'} );

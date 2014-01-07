@@ -3,10 +3,12 @@ angular.module('faceFolio')
 
         loadPeople();
 
+        $scope.$on('personChanged', loadPeople)
+
         function loadPeople() {
             $http.get('/people')
                 .then(function(resp) {
                     $scope.people = resp.data;
                 })
         }
-    });
+    })

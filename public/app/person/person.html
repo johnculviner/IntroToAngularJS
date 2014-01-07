@@ -6,12 +6,15 @@
     <div>
         First Name:
     </div>
-    <input ng-model="person.firstName" name="firstName" type="text" />
-
+    <span field-locker="person.firstName">
+        <input ng-model="person.firstName" name="firstName" type="text" />
+    </span>
     <div>
         Last Name:
     </div>
-    <input ng-model="person.lastName" name="lastName" type="text" />
+    <span field-locker="person.lastName">
+        <input ng-model="person.lastName" name="lastName" type="text" />
+    </span>
 
     <button ng-click="updatePerson(personForm)" ng-show="personForm.$dirty">Save Person</button>
 </div>
