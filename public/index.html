@@ -3,21 +3,41 @@
 <head>
     <title>Intro to Angular.js</title>
 </head>
-<body ng-app="">
-<h1>
-    Hello {{firstName + " " + lastName}}!
-</h1>
+<body ng-app="faceFolio">
 
-<div>
+<div ng-controller="person">
+    <h1>
+        Hello {{firstName + " " + lastName}}!
+    </h1>
+
     <div>
-        First Name:
+        <div>
+            First Name:
+        </div>
+        <input ng-model="firstName" type="text" />
+        <div>
+            Last Name:
+        </div>
+        <input ng-model="lastName" type="text" />
     </div>
-    <input ng-model="firstName" type="text" />
+
     <div>
-        Last Name:
+        <div>{{firstName}} what's happenin?</div>
+
+        <textarea ng-model="newStatus" cols="30" rows="10"></textarea>
+        <button ng-click="addNewStatus()">Add Status</button>
     </div>
-    <input ng-model="lastName" type="text" />
+
+    <div ng-show="statuses && statuses.length > 0">
+        Statuses:
+
+        <div ng-repeat="status in statuses">
+            @{{status.date}} - {{status.text}}
+        </div>
+    </div>
 </div>
+
 <script src="lib/angular.js"></script>
+<script src="app/app.js"></script>
 </body>
 </html>
