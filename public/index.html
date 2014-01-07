@@ -31,8 +31,8 @@
     <div ng-show="statuses && statuses.length > 0">
         Statuses:
 
-        <div ng-repeat="status in statuses">
-            @{{status.date}} - {{status.text}}
+        <div ng-repeat="status in statuses | orderBy: 'date':true">
+            @{{status.date | date:'medium'}} - {{status.text}}
         </div>
     </div>
 </div>
