@@ -1,0 +1,31 @@
+.left{
+    float:left;
+}
+
+.active-link {
+    font-weight: bold;
+}
+
+.title {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-top: 0px;
+}
+
+.nav {
+    float:left;
+}
+
+.nav a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.content {
+    float:left;
+    margin-left: 20px;
+}

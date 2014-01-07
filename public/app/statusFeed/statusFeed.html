@@ -1,0 +1,8 @@
+<div>
+    <h2>Status Feed</h2>
+    <div ng-show="statuses && statuses.length > 0">
+        <div ng-repeat="status in statuses | orderBy: 'date':true">
+            By {{status.personName}} @{{status.date | date:'medium'}} - {{status.text}}
+        </div>
+    </div>
+</div>

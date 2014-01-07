@@ -1,0 +1,32 @@
+<h2>
+    Hello {{person.firstName + " " + person.lastName}}!
+</h2>
+
+<div ng-form="personForm">
+    <div>
+        First Name:
+    </div>
+    <input ng-model="person.firstName" name="firstName" type="text" />
+
+    <div>
+        Last Name:
+    </div>
+    <input ng-model="person.lastName" name="lastName" type="text" />
+
+    <button ng-click="updatePerson(personForm)" ng-show="personForm.$dirty">Save Person</button>
+</div>
+
+<div ng-form="statusForm">
+    <div>{{person.firstName}} what's happenin?</div>
+
+    <textarea ng-model="newStatus" name="newStatus" id="" cols="30" rows="10" required="" ng-minlength="10"></textarea>
+    <button ng-disabled="statusForm.newStatus.$invalid" ng-click="addNewStatus()">Add Status</button>
+</div>
+
+<div ng-show="statuses && statuses.length > 0">
+    Statuses:
+
+    <div ng-repeat="status in statuses | orderBy: 'date':true">
+        @{{status.date | date:'medium'}} - {{status.text}}
+    </div>
+</div>

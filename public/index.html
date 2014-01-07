@@ -1,43 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Intro to Angular.js</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body ng-app="faceFolio">
 
-<div ng-controller="person">
-    <h1>
-        Hello {{firstName + " " + lastName}}!
-    </h1>
-
-    <div>
+<div ng-controller="index">
+    <div class="title">
+        <img src="images/ff.png" class="left"/>
+        <span>facefolio</span>
+    </div>
+    <div class="nav">
         <div>
-            First Name:
+            <a ui-sref="statusFeed" ui-sref-active="active-link">Status Feed</a>
         </div>
-        <input ng-model="firstName" type="text" />
-        <div>
-            Last Name:
-        </div>
-        <input ng-model="lastName" type="text" />
-    </div>
-
-    <div ng-form="statusForm">
-        <div>{{firstName}} what's happenin?</div>
-
-        <textarea ng-model="newStatus" name="newStatus" cols="30" rows="10" required="" ng-minlength="10"></textarea>
-        <button ng-disabled="statusForm.newStatus.$invalid" ng-click="addNewStatus()">Add Status</button>
-    </div>
-
-    <div ng-show="statuses && statuses.length > 0">
-        Statuses:
-
-        <div ng-repeat="status in statuses | orderBy: 'date':true">
-            @{{status.date | date:'medium'}} - {{status.text}}
+        <div ng-repeat="person in people">
+            <a ui-sref="person({id: person.id})" ui-sref-active="active-link">{{person.firstName}} {{person.lastName}}</a>
         </div>
     </div>
+    <div class="content" ui-view=""></div>
 </div>
 
+
+
 <script src="lib/angular.js"></script>
+<script src="lib/angular-ui-router.js"></script>
+<script src="lib/angular-resource.js"></script>
 <script src="app/app.js"></script>
+<script src="app/index.js"></script>
+<script src="app/person/person.js"></script>
+<script src="app/statusFeed/statusFeed.js"></script>
 </body>
 </html>
