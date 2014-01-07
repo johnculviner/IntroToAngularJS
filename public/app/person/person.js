@@ -9,18 +9,33 @@ angular.module('faceFolio')
             $scope.person.$save(function() {
                 form.$dirty = false;
             });
-        };
+        }
 
 
-        $scope.statuses = [];
+        var personStatuses = $resource('/people/:personId/statuses/:statusId',
+            { personId : $stateParams.id, statusId:'@id'} );
+
+        queryStatuses();
+
+        function queryStatuses() {
+            $scope.statuses = personStatuses.query();
+        }
 
         $scope.addNewStatus = function() {
-            $scope.statuses.push({
+
+            var newStatus = new personStatuses({
                 text: $scope.newStatus,
                 date: new Date()
             });
-
+            newStatus.$save();
             $scope.newStatus = "";
+
+            queryStatuses();
         }
 
+
+        $scope.deleteStatus = function(status) {
+            status.$delete();
+            queryStatuses();
+        }
     });

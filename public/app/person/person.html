@@ -28,5 +28,6 @@
 
     <div ng-repeat="status in statuses | orderBy: 'date':true">
         @{{status.date | date:'medium'}} - {{status.text}}
+        <button ng-click="deleteStatus(status)">Delete</button>
     </div>
 </div>
